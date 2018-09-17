@@ -1,6 +1,17 @@
-package HW1;
-public class FindGuitarTester {
+package HW1.edu.fitchburgstate.csc7400;
 
+/*
+ *Course Name : Object Oriented Design and Analysis
+ *Professor Name : Orlando Montalvo
+ *Date : 09-16-2018
+ *Assignment - HW1
+ *Students : Navya Avvaru (0396181) VamsiPriya Boppana (0398168) 
+ */
+
+public class FindGuitarTester {
+/*
+ * Program Starts Here
+ */
   public static void main(String[] args) {
     // Set up Rick's guitar inventory
     Inventory inventory = new Inventory();
@@ -22,6 +33,9 @@ public class FindGuitarTester {
   }
 
   private static void initializeInventory(Inventory inventory) {
+	  /*
+	   * Adding the inventory to Initialize Inventory Class
+	   * */
     inventory.addGuitar("11277", 3999.95, "Collings", "CJ", "acoustic",
                         "Indian Rosewood", "Sitka");
     inventory.addGuitar("V95693", 1499.95, "Fender", "Stratocastor", "electric",

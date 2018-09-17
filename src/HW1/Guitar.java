@@ -6,14 +6,22 @@
  * Date: 2018-09-03
  */
 
-package HW1;
+package HW1.edu.fitchburgstate.csc7400;
 
 /**
  * Guitar contains the information needed to keep track of a type of guitar from
  * Rick's music store
  * 
- * @author HeadFirstOODA
+
  *
+ */
+
+/*
+ *Course Name : Object Oriented Design and Analysis
+ *Professor Name : Orlando Montalvo
+ *Date : 09-16-2018
+ *Assignment - HW1
+ *Students : Navya Avvaru (0396181) VamsiPriya Boppana (0398168) 
  */
 public class Guitar {
 
