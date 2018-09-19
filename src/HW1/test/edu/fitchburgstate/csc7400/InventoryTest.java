@@ -5,10 +5,15 @@ import HW1.edu.fitchburgstate.csc7400.Guitar;
 import HW1.edu.fitchburgstate.csc7400.Inventory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import HW1.edu.fitchburgstate.csc7400.GuitarSpec;
+import HW1.edu.fitchburgstate.csc7400.GuitarBuilder;
+import HW1.edu.fitchburgstate.csc7400.TypeOfGuitar;
+import HW1.edu.fitchburgstate.csc7400.TypeOfWood;
 /*
  *Course Name : Object Oriented Design and Analysis
  *Professor Name : Orlando Montalvo
- *Date : 09-16-2018
+ *Date : 09-18-2018
  *Assignment - HW1
  *Students : Navya Avvaru (0396181) VamsiPriya Boppana (0398168) 
  */
@@ -16,6 +21,8 @@ import org.junit.jupiter.api.Test;
 public class InventoryTest {
     Inventory inventoryClass;
     Guitar guitarClass;
+    GuitarSpec guitarSpec;
+
      /**
      * Test data setup. Add guitar data to inventory
      */
@@ -23,26 +30,30 @@ public class InventoryTest {
     public void setup() {
         // instantiate inventory class
     	inventoryClass = new Inventory();
-        guitarClass = new Guitar("1111", 7999.50, "GuiterBuilders.Inc", "GuiterNew", "GuiterTypeNew",
-                "GuiterBlackwood", "GuiterTopWood");
-        inventoryClass.addGuitar(guitarClass.getSerialNumber(), guitarClass.getPrice(), guitarClass.getManufacturer(),
-                guitarClass.getModel(), guitarClass.getType(), guitarClass.getBackWood(), guitarClass.getTopWood());
-        
     }
      /**
      * This function is to test getGuitar() method. This method takes in serial number.
      */
     @Test
     void checkIfSerialNumberExists() {
-        Guitar check = inventoryClass.getGuitar(guitarClass.getSerialNumber());
-        Guitar available = guitarClass;
+    	guitarClass = new Guitar("1111", 1009.99, GuitarBuilder.COLLINGS, "GuiterNew", TypeOfGuitar.ACOUSTIC,
+    			TypeOfWood.ADIRONDACK, TypeOfWood.ALDER );
+    	inventoryClass.addGuitar(guitarClass.getSerialNumber(), guitarClass.getPrice(), guitarClass.getGuitarSpec().getGuitarBuilder(),
+    			guitarClass.getGuitarSpec().getGuitarModel(), guitarClass.getGuitarSpec().getGuitarType(), guitarClass.getGuitarSpec().getGuitarBackWood(),
+    			guitarClass.getGuitarSpec().getGuitarTopWood());
+	        Guitar check = inventoryClass.getGuitar(guitarClass.getSerialNumber());
+	        Guitar available = guitarClass;    
         assertEquals(check.getSerialNumber(), available.getSerialNumber());
-        assertEquals(check.getManufacturer(), available.getManufacturer());
-        assertEquals(check.getModel(), available.getModel());
+    }
+    
+    void checkIfTheGuitarSearchedExists(Guitar check, Guitar available) {
+        assertEquals(check.getSerialNumber(), available.getSerialNumber());
+        assertEquals(check.getGuitarSpec().getGuitarBuilder(), available.getGuitarSpec().getGuitarBuilder());
+        assertEquals(check.getGuitarSpec().getGuitarModel(), available.getGuitarSpec().getGuitarModel());
         assertEquals(check.getPrice(), available.getPrice());
-        assertEquals(check.getType(), available.getType());
-        assertEquals(check.getTopWood(), available.getTopWood());
-        assertEquals(check.getBackWood(), available.getBackWood());
+        assertEquals(check.getGuitarSpec().getGuitarType(), available.getGuitarSpec().getGuitarType());
+        assertEquals(check.getGuitarSpec().getGuitarTopWood(), available.getGuitarSpec().getGuitarTopWood());
+        assertEquals(check.getGuitarSpec().getGuitarBackWood(), available.getGuitarSpec().getGuitarBackWood());
     }
      
      /**

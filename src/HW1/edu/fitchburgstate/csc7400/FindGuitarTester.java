@@ -1,9 +1,12 @@
 package HW1.edu.fitchburgstate.csc7400;
 
+import java.util.Iterator;
+import java.util.List;
+
 /*
  *Course Name : Object Oriented Design and Analysis
  *Professor Name : Orlando Montalvo
- *Date : 09-16-2018
+ *Date : 09-18-2018
  *Assignment - HW1
  *Students : Navya Avvaru (0396181) VamsiPriya Boppana (0398168) 
  */
@@ -17,20 +20,30 @@ public class FindGuitarTester {
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
 
-    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor", 
-                                      "electric", "Alder", "Alder");
-    Guitar guitar = inventory.search(whatErinLikes);
-    if (guitar != null) {
-      System.out.println("Erin, you might like this " +
-        guitar.getManufacturer() + " " + guitar.getModel() +  " " +
-        guitar.getType() + " guitar:\n   " +
-        guitar.getBackWood() + " back and sides,\n   " +
-        guitar.getTopWood() + " top.\nYou can have it for only $" +
-        guitar.getPrice() + "!");
-    } else {
-      System.out.println("Sorry, Erin, we have nothing for you.");
+    GuitarSpec whatErinLikes = new GuitarSpec(GuitarBuilder.FENDER, "Stratocastor", 
+            TypeOfGuitar.ELECTRIC, TypeOfWood.ALDER, TypeOfWood.ALDER);
+     
+        List<Guitar> matchingGuitars = inventory.search(whatErinLikes);
+
+        // This prints if there is a return from the search function in the inventory class
+       	
+       	if (matchingGuitars != null) {
+       	    System.out.println("the below are the matched guitars:");
+       	    for (Iterator<?> i = matchingGuitars.iterator(); i.hasNext(); ) {
+       		 	        Guitar guitar = (Guitar)i.next();
+       		 	    GuitarSpec spec = guitar.guitarSpec;
+       		 	        System.out.println("  We have a  " + 
+       		 	       	spec.getGuitarBuilder() + " " + spec.getGuitarModel() +  " " +
+       		 	       	spec.getGuitarType() + " guitar:\n   " +
+       		 	       	spec.getGuitarBackWood() + " back and sides,\n   " +
+       		 	       	spec.getGuitarTopWood() + " top.\nYou can have it for only $" +
+       		 	       	guitar.getPrice() + "!");
+       	    }
+       	}
+       	    else {
+        	System.out.println("Sorry, Erin, we have nothing for you.");
+        }
     }
-  }
 
   private static void initializeInventory(Inventory inventory) {
 	  /*

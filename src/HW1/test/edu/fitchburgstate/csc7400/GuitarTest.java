@@ -1,3 +1,4 @@
+
 package HW1.test.edu.fitchburgstate.csc7400;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,14 +7,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import HW1.edu.fitchburgstate.csc7400.Guitar;
-/*
- *Courne Name : Object Oriented Design and Analysis
+import HW1.edu.fitchburgstate.csc7400.GuitarSpec;
+import HW1.edu.fitchburgstate.csc7400.GuitarBuilder;
+import HW1.edu.fitchburgstate.csc7400.TypeOfGuitar;
+import HW1.edu.fitchburgstate.csc7400.TypeOfWood;
+
+ /*
+ *Course Name : Object Oriented Design and Analysis
  *Professor Name : Orlando Montalvo
- *Date : 09-16-2018
+ *Date : 09-18-2018
  *Assignment - HW1
  *Students : Navya Avvaru (0396181) VamsiPriya Boppana (0398168) 
  */
-
 /*
  * Creating a Test testGuitar*/
 
@@ -33,6 +38,20 @@ class GuitarTest {
 				"Adirondack" // Face wood
 				);
 	}
+	/*
+	 * 
+	 * Tests getSpec() method in Guitar class
+	 */
+	@Test
+	void testGetSpec() {
+		GuitarSpec returnedGuiterSpec = this.testGuitar.getGuitarSpec();
+		assertEquals(returnedGuiterSpec.getGuitarBuilder(),"Gibson");
+		assertEquals(returnedGuiterSpec.getGuitarBackWood(),"Maple");
+		assertEquals(returnedGuiterSpec.getGuitarModel(),"EasyLearn");
+		assertEquals(returnedGuiterSpec.getGuitarTopWood(),"Adirondack");
+		assertEquals(returnedGuiterSpec.getGuitarType(),"electric");
+	}
+	
 	/*
 	 * This function is testing if the passed serial number exists or not. 
 	 */
@@ -67,7 +86,7 @@ class GuitarTest {
 	@Test
 	void testGetManufacturer() {
 		String expected = "Gibson";
-		String returned = this.testGuitar.getManufacturer();
+		GuitarBuilder returned = this.testGuitar.getGuitarSpec().getGuitarBuilder();
 		assertEquals(expected, returned, String.format("Manufacturer %s != %s", expected, returned));
 	}
     /*
@@ -76,7 +95,7 @@ class GuitarTest {
 	@Test
 	void testGetModel() {
 		String expected = "EasyLearn";
-		String returned = this.testGuitar.getModel();
+		String returned = this.testGuitar.getGuitarSpec().getGuitarModel();
 		assertEquals(expected, returned, String.format("Model %s != %s", expected, returned));
 	}
     /*
@@ -85,7 +104,7 @@ class GuitarTest {
 	@Test
 	void testGetType() {
 		String expected = "electric";
-		String returned = this.testGuitar.getType();
+		TypeOfGuitar returned = this.testGuitar.getGuitarSpec().getGuitarType();
 		assertEquals(expected, returned, String.format("Type %s != %s", expected, returned));
 	}
     /*
@@ -93,7 +112,7 @@ class GuitarTest {
 	@Test
 	void testGetBackWood() {
 		String expected = "Maple";
-		String returned = this.testGuitar.getBackWood();
+		TypeOfWood returned = this.testGuitar.getGuitarSpec().getGuitarBackWood();
 		assertEquals(expected, returned, String.format("Back wood %s != %s", expected, returned));
 	}
     /*
@@ -101,7 +120,7 @@ class GuitarTest {
 	@Test
 	void testGetTopWood() {
 		String expected = "Adirondack";
-		String returned = this.testGuitar.getTopWood();
+		TypeOfWood returned = this.testGuitar.getGuitarSpec().getGuitarTopWood();
 		assertEquals(expected, returned, String.format("Top wood %s != %s", expected, returned));
 	}
 }
