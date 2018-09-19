@@ -16,7 +16,6 @@ public enum TypeOfGuitar {
 		 	      case ELECTRIC: return "Electric";
 		 	      default:  return "unspecified";
 		 	    }
-		//		return type;
 		 	  }
 		 
 		 }

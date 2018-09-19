@@ -9,20 +9,7 @@ package HW1.edu.fitchburgstate.csc7400;
 public enum GuitarBuilder {
 	
 	FENDER, MARTIN, GIBSON, COLLINGS, OLSON, RYAN, PRS, ANY;
-	
-	
-	// The main purpose of toString is to generate a String representation of an object, 
-	// means the return value is always a String. 
-	// In most cases this simply is the object's class and package name, 
-	// but on some cases like StringBuilder you will got actually a String-text.
-	
-	
-	 /**
-	   * @param A valid Builder value.
-	   * @return A String representing the value for the given Builder,
-	   *         or null if the Builder is not valid.
-	   *         public String EnumBuilder() {
-	 */
+
 	public String toString() {
 	
 		switch(this) {
